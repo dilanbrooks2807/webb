@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALI'BURGER'</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Anton&family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0d0d0d, #330000);
+      color: #fff;
+      font-family: 'Anton', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 50;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffcc00;
+      font-family: 'Bangers', cursive;
+      text-shadow: 1px 1px #000;
+    }
+
+    section {
+      padding: 6rem 2rem 2rem;
+    }
+
+    img, video {
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.6);
+      border: 2px solid #ff0000;
+    }
+
+    h1, h2 {
+      color: #ff4500;
+      font-family: 'Luckiest Guy', cursive;
+    }
+
+    p, li {
+      font-family: 'Bangers', cursive;
+    }
+
+    .scrolling-text {
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      color: #ffcc00;
+      font-size: 2rem;
+      font-family: 'Luckiest Guy', cursive;
+      text-shadow: 2px 2px 5px #ff0000;
+    }
+
+    .scrolling-text span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 15s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .producto-animado {
+      animation: rotarYmover 6s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    @keyframes rotarYmover {
+      0%   { transform: rotate(0deg) translateY(0px); }
+      25%  { transform: rotate(2deg) translateY(-5px); }
+      50%  { transform: rotate(0deg) translateY(0px); }
+      75%  { transform: rotate(-2deg) translateY(5px); }
+      100% { transform: rotate(0deg) translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#local">Local</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#galeria">Nuestra Galería</a></li>
+        <li><a href="#audio">Audio Descriptivo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="scrolling-text mt-16">
+    <span>🔥 Ven, disfruta y convive en el mejor local de la zona ALI'BURGER' 🔥</span>
+  </div>
+
+  <section id="inicio" class="text-center">
+    <h1 class="text-6xl mb-4">¡Las mejores hamburguesas, papas y alitas te esperan!</h1>
+    <p class="text-xl mb-4">Hechas con pasión y sabor único en cada mordida.</p>
+
+    <a href="orden.html">
+      <button class="mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 rounded shadow-lg transition duration-300">
+<a href="usuario.html">
+        🛒 Empezar a ordenar
+      </button>
+    </a>
+
+ <center> <img src="burger.jpg">
+  </section> </center>
+
+  <!-- Resto de secciones igual que tu código original -->
+
+  <section id="menu">
+    <h2 class="text-4xl mb-4">Menú</h2>
+    <ul class="text-lg space-y-2">
+      <li>Hamburguesa clásica - $45</li>
+      <li>Hamburguesa especial - $50</li>
+      <li>Hamburguesa hawaiana - $55</li>
+      <li>Hamburguesa con papas - $85</li>
+      <li>Papas a la francesa - $35</li>
+      <li>Hot dog - $18</li>
+      <li>Orden de 3 hot dogs - $45</li>
+      <li>Alitas - $55</li>
+      <li>Alitas con papas - $70</li>
+      <li>Plátanos fritos - $30</li>
+      <li>Plátanos capeados - $35</li>
+    </ul>
+  </section>
+
+  <section id="nosotros">
+    <h2 class="text-4xl mb-4">Sobre Nosotros</h2>
+    <p class="mb-4">Experiencia única en comida rápida con atención cálida, productos frescos y precios accesibles.</p>
+    <h3 class="text-2xl mt-4 mb-2 text-yellow-300">Misión</h3>
+    <p>Brindar a nuestros clientes una experiencia única en comida rápida...</p>
+    <h3 class="text-2xl mt-4 mb-2 text-yellow-300">Visión</h3>
+    <p>En los próximos 3 años, buscamos posicionarnos como uno de los puestos más reconocidos...</p>
+  </section>
+
+  <section id="local">
+    <h2 class="text-4xl mb-4 text-center">Nuestro Local</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <img src="local.jpg"  >
+      <img src="local2.jpg" >
+    </div>
+  </section>
+
+  <section id="productos">
+    <h2 class="text-4xl mb-4 text-center">Nuestros Productos</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <img src="alitasconpapas.jpg" alt="Alias con Papas a la francesa" class="w-full h-48 object-cover rounded-lg producto-animado" />
+      <img src="alitas.jpg" alt="Alitas " class="w-full h-48 object-cover rounded-lg producto-animado" />
+      <img src="papas.jpg" alt="Papas a la francesa" class="w-full h-48 object-cover rounded-lg producto-animado" />
+      <img src="hamburguesaconpapas.jpg" alt="Hamburguesa con papas" class="w-full h-48 object-cover rounded-lg producto-animado" />
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2 class="text-4xl mb-4 text-center">Nuestra Galería</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <img src="prepara.jpg" alt="Preparación de alitas" class="w-full h-48 object-cover rounded-lg" />
+      <img src="alas.jpg" alt="Alitas fritas" class="w-full h-48 object-cover rounded-lg" />
+      <img src="cocinando.jpg" class="w-full h-48 object-cover rounded-lg" />
+    </div>
+    <div class="mt-8 text-center">
+      <h3 class="text-2xl text-yellow-300 mb-2">Mira nuestro video</h3>
+    
+  <center> <iframe width="560" height="315"
+    src="https://www.youtube.com/embed/4hpb5zHlu6A"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe> </center>
+    </div>
+  </section>
+
+  <section id="audio">
+    <h2 class="text-4xl mb-4 text-center">🎧 Audio Descriptivo</h2>
+    <div class="flex flex-col items-center">
+      <audio controls class="w-full md:w-2/3">
+        <source src="audio/audio-descriptivo.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+      </audio>
+      <p class="mt-4 text-center max-w-xl text-lg">
+        Te contamos nuestra historia, nuestro estilo, y por qué nuestros clientes siempre regresan.
+      </p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2 class="text-4xl mb-4">Contacto</h2>
+    <p class="text-lg mb-2">📱 WhatsApp: <a href="https://wa.me/5215573880201" target="_blank">Envíanos un mensaje</a></p>
+    <p class="text-lg mb-2">📍 13 División del Norte, Ecatepec de Morelos, Estado de México</p>
+    <p class="text-lg mb-4">
+      <a href="https://www.google.com/maps/place/13+División+del+Norte,+Ecatepec+de+Morelos,+55055+Estado+de+México" target="_blank" class="underline text-yellow-300">Ver ubicación en Google Maps</a>
+    </p>
+  </section>
+</body>
+</html>

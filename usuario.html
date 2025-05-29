@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login de Usuarios</title>
+  <style>
+    body {
+      background-color: #ff4d4d;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ff4d4d;
+      margin-bottom: 20px;
+    }
+
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background-color: #e60000;
+    }
+
+    .error {
+      color: red;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    .link-button {
+      background: none;
+      color: #ff4d4d;
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box" id="loginBox">
+    <h2>Bienvenidos a  ALI'BURGER'</h2>
+
+    <!-- LOGIN -->
+    <div id="loginForm">
+      <label for="usuario">Usuario:</label>
+      <select id="usuario">
+        <option value="Berrios">Berrios</option>
+        <option value="Dilan">Dilan</option>
+        <option value="Borjas">Borjas</option>
+      </select>
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" placeholder="Contraseña">
+
+      <div class="error" id="errorMsgLogin">Usuario o contraseña incorrectos</div>
+
+      <button onclick="validarLogin()">Ingresar</button>
+      <button class="link-button" onclick="mostrarRegistro()">¿No tienes cuenta? Regístrate</button>
+    </div>
+
+    <!-- REGISTRO -->
+    <div id="registerForm" style="display:none;">
+      <label for="newUser">Nuevo usuario:</label>
+      <input type="text" id="newUser" placeholder="Nombre de usuario">
+
+      <label for="newPassword">Nueva contraseña:</label>
+      <input type="password" id="newPassword" placeholder="Contraseña">
+
+      <div class="error" id="errorMsgRegister">Error al registrar usuario</div>
+      <div class="error" id="successMsgRegister" style="color:green;">Usuario registrado con éxito</div>
+
+      <button onclick="registrarUsuario()">Registrar</button>
+      <button class="link-button" onclick="mostrarLogin()">Volver al login</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Usuarios predefinidos
+    const usuariosPredeterminados = {
+      Berrios: "12345",
+      Dilan: "2807",
+      Borjas: "0123"
+    };
+
+    // Cargar usuarios desde localStorage o iniciar vacío
+    function cargarUsuarios() {
+      const almacenados = localStorage.getItem('usuariosRegistrados');
+      return almacenados ? JSON.parse(almacenados) : {};
+    }
+
+    // Guardar usuarios en localStorage
+    function guardarUsuarios(usuarios) {
+      localStorage.setItem('usuariosRegistrados', JSON.stringify(usuarios));
+    }
+
+    // Validar login
+    function validarLogin() {
+      const usuario = document.getElementById("usuario").value;
+      const contraseña = document.getElementById("password").value;
+
+      const usuariosRegistrados = cargarUsuarios();
+
+      // Verificar en predeterminados o en registrados
+      if ((usuariosPredeterminados[usuario] && usuariosPredeterminados[usuario] === contraseña) ||
+          (usuariosRegistrados[usuario] && usuariosRegistrados[usuario] === contraseña)) {
+        // Login exitoso
+        window.location.href = "ticket.html"; // Cambia por tu página destino
+      } else {
+        // Mostrar error
+        mostrarMensaje('errorMsgLogin');
+      }
+    }
+
+    // Mostrar mensaje error o éxito
+    function mostrarMensaje(id) {
+      document.getElementById(id).style.display = 'block';
+      setTimeout(() => {
+        document.getElementById(id).style.display = 'none';
+      }, 3000);
+    }
+
+    // Mostrar formulario registro
+    function mostrarRegistro() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'block';
+      document.getElementById('errorMsgLogin').style.display = 'none';
+      document.getElementById('errorMsgRegister').style.display = 'none';
+      document.getElementById('successMsgRegister').style.display = 'none';
+      limpiarRegistro();
+    }
+
+    // Mostrar formulario login
+    function mostrarLogin() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('errorMsgLogin').style.display = 'none';
+      limpiarLogin();
+    }
+
+    // Limpiar inputs registro
+    function limpiarRegistro() {
+      document.getElementById('newUser').value = '';
+      document.getElementById('newPassword').value = '';
+    }
+
+    // Limpiar inputs login
+    function limpiarLogin() {
+      document.getElementById('password').value = '';
+    }
+
+    // Registrar nuevo usuario
+    function registrarUsuario() {
+      const nuevoUsuario = document.getElementById('newUser').value.trim();
+      const nuevaContra = document.getElementById('newPassword').value;
+
+      if (nuevoUsuario === '' || nuevaContra === '') {
+        mostrarMensaje('errorMsgRegister');
+        return;
+      }
+
+      // No permitir usuarios predefinidos ni duplicados
+      const usuariosRegistrados = cargarUsuarios();
+      if (usuariosPredeterminados[nuevoUsuario] || usuariosRegistrados[nuevoUsuario]) {
+        document.getElementById('errorMsgRegister').innerText = 'El usuario ya existe';
+        mostrarMensaje('errorMsgRegister');
+        return;
+      }
+
+      // Guardar nuevo usuario
+      usuariosRegistrados[nuevoUsuario] = nuevaContra;
+      guardarUsuarios(usuariosRegistrados);
+
+      document.getElementById('successMsgRegister').style.display = 'block';
+
+      // Limpiar y cambiar a login
+      limpiarRegistro();
+      setTimeout(() => {
+        mostrarLogin();
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
